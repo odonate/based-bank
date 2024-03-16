@@ -6,9 +6,21 @@ import { store } from './helpers';
 
 import { App } from './App';
 
+import Web3 from 'web3';
+import { Web3ReactProvider } from '@web3-react/core';
+import { MetaMaskProvider } from './hooks';
+
+function getLibrary(provider, connector) {
+  return new Web3(provider);
+}
+
 render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <Web3ReactProvider getLibrary={getLibrary}>
+    <MetaMaskProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </MetaMaskProvider>
+  </Web3ReactProvider>,
   document.getElementById('app')
 );
