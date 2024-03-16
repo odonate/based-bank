@@ -7,6 +7,7 @@ import PublicPage from './PublicPage';
 import RegisterPage from './RegisterPage';
 import LoginPage from './LoginPage';
 import DashboardPage from './DashboardPage';
+import CheckingPage from './CheckingPage';
 
 function Page(description, path, element) {
   const page = {
@@ -40,4 +41,5 @@ export const pages = {
 
   // Auth pages.
   DASHBOARD_PAGE: AuthPage('Dashboard', '/dashboard', <DashboardPage/>),
+  CHECKING_PAGE: AuthPage('Checking', '/checking', <CheckingPage/>),
 };

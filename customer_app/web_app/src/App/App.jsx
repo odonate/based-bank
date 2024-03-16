@@ -24,6 +24,7 @@ function App() {
       {pages.REGISTER_PAGE.route}
       {pages.LOGIN_PAGE.route}
       {pages.DASHBOARD_PAGE.route}
+      {pages.CHECKING_PAGE.route}
     </Routes>
   );
 

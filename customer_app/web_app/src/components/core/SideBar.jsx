@@ -15,8 +15,8 @@ export function SideBar({}) {
   );
   const checkingButton = (
     <Link
-      to={pages.PUBLIC_PAGE.path}
-      className={pages.PUBLIC_PAGE.path == location.pathname ? styles.sideButtonCurrent : styles.sideButton}>Checking</Link>
+      to={pages.CHECKING_PAGE.path}
+      className={pages.CHECKING_PAGE.path == location.pathname ? styles.sideButtonCurrent : styles.sideButton}>Checking</Link>
   );
   const savingsButton = (
     <Link
@@ -32,6 +32,7 @@ export function SideBar({}) {
     <div className={styles.sideBar}>
       {dashboardButton}
       {checkingButton}
+      {savingsButton}
       {loanButton}
     </div>
   );
