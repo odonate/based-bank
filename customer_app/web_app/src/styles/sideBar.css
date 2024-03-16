@@ -32,11 +32,11 @@
 }
 
 .sideButton:hover {
-    background: rgb(64, 16, 64);
+    background: rgb(55, 115, 245);
 }
 
 .sideButtonCurrent {    
-    background: rgb(64, 16, 64);
+    background: rgb(55, 115, 245);
     color: rgb(217, 217, 217);
     font-family: "Proto Mono";
     border:none;

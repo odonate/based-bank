@@ -18,12 +18,19 @@ const networkParams = {
     nativeCurrency: { name: "Ether", decimals: 18, symbol: "ETH" },
     blockExplorerUrls: ["https://basescan.org/"],
   },
-  "42161": {
-    chainId: "0xa4b1",
-    rpcUrls: ["https://arb1.arbitrum.io/rpc"],
-    chainName: "Arbitrum One",
+  // "42161": {
+  //   chainId: "0xa4b1",
+  //   rpcUrls: ["https://arb1.arbitrum.io/rpc"],
+  //   chainName: "Arbitrum One",
+  //   nativeCurrency: { name: "Ether", decimals: 18, symbol: "ETH" },
+  //   blockExplorerUrls: ["https://arbiscan.io"],
+  // },
+  "421614": {
+    chainId: "0x66eee",
+    rpcUrls: ["https://arbitrum-sepolia.blockpi.network/v1/rpc/public	"],
+    chainName: "Arbitrum Sepolia",
     nativeCurrency: { name: "Ether", decimals: 18, symbol: "ETH" },
-    blockExplorerUrls: ["https://arbiscan.io"],
+    blockExplorerUrls: ["https://sepolia.arbiscan.io/"],
   },
 };
 
@@ -31,24 +38,37 @@ const venueToChainId = {
   "ethereum": "1",
   "base": "8453",
   "arbitrum": "42161",
+  "arbitrum_sepolia": "421614",
 }
 
 const chainIdToVenue = {
   "1": "ethereum",
   "8453": "base",
   "42161": "arbitrum",
+  "421614": "arbitrum_sepolia",
 }
 
 const chainIdToLogo = {
   "1": EthereumLogo,
   "8453": BaseLogo,
   "42161": ArbitrumLogo,
+  "421614": ArbitrumLogo,
 }
 
+
+const chainIdToGateway = {
+  //"1": "",
+  "8453": "",
+  "42161": "",
+  "421614": "0xd9184dfb6d518d300759326f2cd2cd51bce31e56",
+}
+
+
 export const networkConstants = {
-  CHAIN_IDS: [1, 8453, 42161],
+  CHAIN_IDS: [1, 8453, 421614],
   PARAMS: networkParams,
   VENUE_TO_ID: venueToChainId,
   ID_TO_VENUE: chainIdToVenue,
   ID_TO_LOGO: chainIdToLogo,
+  ID_TO_GATEWAY: chainIdToGateway,
 };

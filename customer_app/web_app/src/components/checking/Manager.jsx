@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import { DepositModal } from '.';
 import { SelectWalletModal } from '@components/core';
 
 import { useMetaMask } from '@hooks';
@@ -25,7 +26,16 @@ const Manager = ({}) => {
       <h2>Checking Account</h2>
     </div>
   );
-  
+
+  const [isDepositOpen, setIsDepositOpen] = useState(false);
+  const handleDeposit = () => {
+    setIsDepositOpen(true);
+  };
+  const [isWithdrawalOpen, setIsWithdrawalOpen] = useState(false);
+  const handleWithdrawal = () => {
+    setIsWithdrawalOpen(true);
+  };
+
   const infoBody = (
     <div className={styles.managerInfoBody}>
       <ol className={styles.managerInfoList}>
@@ -34,6 +44,8 @@ const Manager = ({}) => {
           {'By connecting your wallet you can make a deposit your based bank checking account.'}
         </li>
       </ol>
+      <button onClick={handleDeposit}>DEPOSIT</button>
+      <button onClick={handleWithdrawal}>WITHDRAWAL</button>
     </div>
   );
 
@@ -48,6 +60,7 @@ const Manager = ({}) => {
       </div>
       
       {isConnectOpen && <SelectWalletModal setIsOpen={setIsConnectOpen}/>}
+      {isDepositOpen && <DepositModal setIsOpen={setIsDepositOpen}/>}
     </div>
   );
 };
