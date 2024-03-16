@@ -43,10 +43,10 @@ const DepositModal = ({ setIsOpen }) => {
     if (isApproving || !deposit.amount) return;
     setIsApproving(true);
 
-    const amount = shiftDecimals(deposit.amount, 6);
-    const decimalAmount = new BigNumber(amount);
+    const shifted = shiftDecimals(deposit.amount, 6);
+    const decimalAmount = new BigNumber(shifted);
     const decimalApprovedAmount = new BigNumber(approvedAmount || '0');
-    console.log("Shifted:", amount);
+    console.log("Shifted:", shifted);
     console.log("AMOUNT:", decimalAmount);
     console.log("APPROVED:", decimalApprovedAmount);
     try {
@@ -58,13 +58,14 @@ const DepositModal = ({ setIsOpen }) => {
         dispatch(defluxActions.createDeposit(deposit));
       } else {
         // Need to approve. Then deposit.
-        approveTxHash = await approveTokens(gatewayAddress, amount);
+        approveTxHash = await approveTokens(gatewayAddress, shifted);
         dispatch(defluxActions.createDeposit(deposit));
       }
     } catch (error) {
       console.error("Error approving ERC20 token:", error);
     } finally {
       setIsApproving(false);
+      setIsOpen(false);
     }
     
     console.log("Create Deposit", deposit);

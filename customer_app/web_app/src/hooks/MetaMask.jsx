@@ -132,7 +132,7 @@ export const MetaMaskProvider = ({ children }) => {
         }
         setIsApproving(true);
         const tokenContract = new library.eth.Contract(ERC20TokenABI.abi, tokenAddress);
-        const approveData = tokenContract.methods.approve(spender, amount).encodeABI();
+        const approveData = tokenContract.methods.approve(spender, amount.toString()).encodeABI();
         // Slippage tolerace calculation: 0.5%
         const gasPrice = await library.eth.getGasPrice();
         console.log("Account:", account);
@@ -144,7 +144,7 @@ export const MetaMaskProvider = ({ children }) => {
             from: account,
             to: tokenAddress,
             data: approveData,
-            gasPrice: gasPrice,
+            gasPrice: gasPrice.toString(),
           }).on('transactionHash', function(hash) {
             console.log("Token approval successful");
             setIsApproving(false);

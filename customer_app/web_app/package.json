@@ -11,7 +11,7 @@
     "@lineup-lite/hooks": "1.6.0",
     "@szhsin/react-menu": "3.4.1",
     "awesome-typescript-loader": "^5.2.1",
-    "bignumber.js": "^9.1.1",
+    "bignumber.js": "^9.1.2",
     "css-loader": "^6.5.1",
     "file-loader": "^6.2.0",
     "history": "^5.2.0",
@@ -32,7 +32,7 @@
     "uuid": "^9.0.0",
     "url-loader": "^4.1.1",
     "webpack-cli": "^4.9.2",
-    "web3": "^1.6.0",
+    "web3": "^4.6.0",
     "@web3-react/core": "^6.1.9",
     "@web3-react/injected-connector": "^6.0.7"
   },
