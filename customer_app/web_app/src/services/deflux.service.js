@@ -59,7 +59,8 @@ function listBalances(accountId) {
   return fetchWithTimeout(url, requestOptions)
     .then(json => handleResponse(json, false))
     .then((response) => {
-      return response;
+      console.log(response);
+      return response.ledgerBalances;
     });
 }
 

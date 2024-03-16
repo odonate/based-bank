@@ -11,7 +11,7 @@ import styles from '@styles';
 
 const Manager = ({}) => {
   const { account } = useMetaMask();
-  const balances = useSelector(state => state.defluxService.balacnes);
+  const balances = useSelector(state => state.defluxService.balances);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(defluxActions.listBalances('5daae5cd-6dfb-5559-aea8-8d662c4abac0'));
@@ -56,7 +56,12 @@ const Manager = ({}) => {
       <button onClick={handleDeposit}>DEPOSIT</button>
       <button onClick={handleWithdrawal}>WITHDRAWAL</button>
       <div>
-        <div>Balance: {balances}</div>
+        {balances && balances.length > 0 && (
+          <div>
+            <div>Balance: {balances[0]?.denominationToEffectiveBalance["0x75faf114eafb1bdbe2f0316df893fd58ce46aa4d"]}</div>
+            <div>Available Balance: {balances[0]?.denominationToAvailableBalance["0x75faf114eafb1bdbe2f0316df893fd58ce46aa4d"]}</div>
+          </div>
+        )}
       </div>
     </div>
   );

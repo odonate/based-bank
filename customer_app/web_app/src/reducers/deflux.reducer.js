@@ -30,8 +30,8 @@ const withdrawal = (state = null, action) => {
 
 const balances = (state = null, action) => {
   switch (action.type) {
-    case defluxConstants.LIST_BALANCES_SUCCESS:
-      return action;
+  case defluxConstants.LIST_BALANCES_SUCCESS:
+      return action.balances;
     case defluxConstants.LIST_BALANCES_FAILURE:
       return state;
     case defluxConstants.LIST_BALANCES_CLEAR:
