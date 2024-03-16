@@ -17,6 +17,7 @@ module.exports = {
       '@pages': path.resolve(__dirname, 'src/pages'),
       '@styles': path.resolve(__dirname, 'src/styles'),
       '@components': path.resolve(__dirname, 'src/components'),
+      '@images': path.resolve(__dirname, 'src/images'),
     },
   },
   module: {
@@ -49,6 +50,17 @@ module.exports = {
           importLoaders: 1,
 	  esModule: false,
 	}
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|webp)$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 8192,
+            name: 'images/[name].[ext]',
+	    esModule: false
+          },
+        },
       },
       {
 	// all output '.js' files will have any sourcemaps re-processed by 'source-map-loader'
