@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { pages } from '@pages';
-import { Link } from '@components/core';
+import { Link, NetworkDropDown } from '@components/core';
 import { authActions } from '@actions';
+
+import { useMetaMask } from '@hooks';
 
 import styles from '@styles';
 
@@ -35,13 +37,16 @@ const NavBarPages = () => {
 
 const NavBarWallet = () => {
   const dispatch = useDispatch();
+  const { isActive } = useMetaMask();
+
   const login = useSelector(state => state.authService.login);
 
   
   const handleLogout = () => {
     dispatch(authActions.clearLogin());
   };
-  
+
+  const networkDropDown = <NetworkDropDown/>;  
   const registerButton = <Link to={pages.REGISTER_PAGE.path}>REGISTER</Link>;
   const loginButton = <Link to={pages.LOGIN_PAGE.path}>LOGIN</Link>;
   const logoutButton = <button onClick={handleLogout}>LOGOUT</button>;
@@ -49,6 +54,7 @@ const NavBarWallet = () => {
 
   return (
     <div className={styles.navBarWallet}>
+      {isActive ? networkDropDown : ''}
       {login ? (
         logoutButton
       ) : (

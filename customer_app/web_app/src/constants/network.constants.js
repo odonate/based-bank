@@ -46,7 +46,7 @@ const chainIdToLogo = {
 }
 
 export const networkConstants = {
-  CHAIN_IDS: [1, 10, 56, 137, 250, 570, 8453, 42161, 43114],
+  CHAIN_IDS: [1, 8453, 42161],
   PARAMS: networkParams,
   VENUE_TO_ID: venueToChainId,
   ID_TO_VENUE: chainIdToVenue,
