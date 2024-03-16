@@ -38,7 +38,25 @@ function createWithdrawal(withdrawal) {
   };
 }
 
+function listBalances(accountId) {
+  function success(balances) {
+    return { type: defluxConstants.LIST_BALANCES_SUCCESS, balances };
+  }
+  function failure(error) {
+    return { type: defluxConstants.LIST_BALANCES_FAILURE, error };
+  }
+
+  return (dispatch) => {
+    defluxService.listBalances(accountId)
+      .then(
+	(balances) => dispatch(success(balances)),
+	(error) => dispatch(failure(error.toString()))
+      );
+  };
+}
+
 export const defluxActions = {
   createDeposit,
   createWithdrawal,
+  listBalances,
 }

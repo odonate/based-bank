@@ -32,7 +32,7 @@ const Manager = ({}) => {
       <ol className={styles.managerInfoList}>
         <li>
           <span className={styles.managerInfoListNumber}>1.</span>
-          {'By connecting your wallet you can make a deposit your based bank checking account.'}
+          {'By connecting your wallet you can make a deposit your Based Bank checking account.'}
         </li>
       </ol>
     </div>

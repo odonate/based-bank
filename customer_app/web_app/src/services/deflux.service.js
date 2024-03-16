@@ -47,7 +47,24 @@ function createWithdrawal(withdrawal) {
     });
 }
 
+// Ledger Services.
+
+function listBalances(accountId) {
+  const requestOptions = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  };
+  const url = `${config.deflux_api}/v1/balances/list?account_ids=${accountId}`
+  console.log(url);
+  return fetchWithTimeout(url, requestOptions)
+    .then(json => handleResponse(json, false))
+    .then((response) => {
+      return response;
+    });
+}
+
 export const defluxService = {
   createDeposit,
   createWithdrawal,
+  listBalances,
 }
