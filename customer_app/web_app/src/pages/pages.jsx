@@ -4,6 +4,7 @@ import { useLocation, Route, Routes } from 'react-router-dom';
 import { PublicElement } from '@components/routing';
 
 import PublicPage from './PublicPage';
+import RegisterPage from './RegisterPage';
 
 function Page(description, path, element, isPrivate, isConnect = false, isPublic = false) {
   const page = {
@@ -25,5 +26,6 @@ function Page(description, path, element, isPrivate, isConnect = false, isPublic
 export const pages = {
   // Public pages.
   PUBLIC_PAGE: Page('Public', '/', <PublicPage/>, false, false, true),
+  REGISTER_PAGE: Page('Register', '/register', <RegisterPage/>, false, false, true),
 
 };

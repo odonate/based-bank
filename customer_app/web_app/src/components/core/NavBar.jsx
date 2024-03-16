@@ -20,10 +20,12 @@ export function NavBar({}) {
 
 const NavBarPages = () => {
   const homeButton = <Link to={pages.PUBLIC_PAGE.path}>HOME</Link>;
+  const registerButton = <Link to={pages.REGISTER_PAGE.path}>REGISTER</Link>;
 
   return (
     <div className={styles.navBarPages}>
       {homeButton}
+      {registerButton}
     </div>
   );
 };

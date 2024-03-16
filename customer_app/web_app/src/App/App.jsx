@@ -21,6 +21,7 @@ function App() {
     <Routes>
       {/* Public Pages */}
       {pages.PUBLIC_PAGE.route}
+      {pages.REGISTER_PAGE.route}
     </Routes>
   );
 

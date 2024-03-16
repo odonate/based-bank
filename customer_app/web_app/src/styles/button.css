@@ -1,0 +1,19 @@
+.button {
+    background: rgb(8, 4, 4);
+    color: rgb(217, 217, 217);
+    font-family: "Proto Mono";
+    border:none;
+    position:relative;
+    font-size: 12px;
+    padding: 10px 12px;
+    cursor:pointer;
+    transition:200ms ease all;
+    outline:none;
+    text-decoration: none;
+    text-align: center;
+    z-index: 1;
+}
+
+.button:hover {
+  color: rgb(217, 21, 217);
+}
