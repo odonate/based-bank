@@ -3,14 +3,14 @@ import { useNavigate, useLocation } from 'react-router-dom';
 
 import { NavBar, Link } from '@components/core';
 import { pages } from '@pages';
-
 import styles from '@styles';
 
-const RegisterPage = (props) => {
+const LoginPage = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({
-    email: '',
     username: '',
     password: '',
   });
@@ -20,10 +20,8 @@ const RegisterPage = (props) => {
       ...prevFormData,
       [name]: value,
     }));
-  };
-  
+  };  
   const [isClicked, setIsClicked] = useState({
-    email: false,
     username: false,
     password: false,
   });
@@ -44,28 +42,13 @@ const RegisterPage = (props) => {
     e.preventDefault();
     console.log(user);
     setUser({
-      email: '',
       username: '',
       password: '',
     });
-    navigate(pages.LOGIN_PAGE.path, { state: { from: location }});
-    // register + navigate.
+    // login + navigate.
   };
   const form = (
     <form onSubmit={handleSubmit}>
-      <div className={styles.authFormSection}>
-        <label className={styles.authInputLabel}>Email</label>
-        <input
-          type="email"
-          name="email"
-          value={user.email}
-          onChange={handleChange}
-          onFocus={() => handleInputFocus('email')}
-          onBlur={() => handleInputBlur('email')}
-          className={isClicked.email ? `${styles.authInput} ${styles.authInputClicked}` : `${styles.authInput}`}
-          autoComplete="off"
-          required/>
-      </div>
       <div className={styles.authFormSection}>
         <label className={styles.authInputLabel}>Username</label>
         <input
@@ -92,25 +75,27 @@ const RegisterPage = (props) => {
           autoComplete="off"
           required/>
       </div>
-      <button type="submit" className={styles.authButton}>Register</button>
+      <button type="submit" className={loading ? styles.authButtonLoading : styles.authButton}>
+        {loading ? <div/> : 'Log In'}
+      </button>
     </form>
   );
-  
+
   return (
     <div className={styles.container}>
       <NavBar/>
       <div className={styles.authFormContainer}>
         {form}
         <p className={styles.authLinkMsg}>
-          Already have an account?{' '}
+          Need an account?{' '}
           <Link
-            to={pages.LOGIN_PAGE.path}
+            to={pages.REGISTER_PAGE.path}
             className={styles.authLink}
-          >Log In</Link>
+          >Register</Link>
         </p>
       </div>
     </div>
   );
 };
 
-export default RegisterPage;
+export default LoginPage;

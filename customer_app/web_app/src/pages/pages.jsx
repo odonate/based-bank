@@ -5,6 +5,8 @@ import { PublicElement } from '@components/routing';
 
 import PublicPage from './PublicPage';
 import RegisterPage from './RegisterPage';
+import LoginPage from './LoginPage';
+import DepositPage from './DepositPage';
 
 function Page(description, path, element, isPrivate, isConnect = false, isPublic = false) {
   const page = {
@@ -27,5 +29,7 @@ export const pages = {
   // Public pages.
   PUBLIC_PAGE: Page('Public', '/', <PublicPage/>, false, false, true),
   REGISTER_PAGE: Page('Register', '/register', <RegisterPage/>, false, false, true),
+  LOGIN_PAGE: Page('Login', '/login', <LoginPage/>, false, false, true),
+  DEPOSIT_PAGE: Page('Deposit', '/deposit', <DepositPage/>, false, false, true),
 
 };

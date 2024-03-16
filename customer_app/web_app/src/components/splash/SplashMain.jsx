@@ -25,7 +25,6 @@ const SplashMain = ({ }) => {
       <p className={styles.splashMainWords}>Frictionless cross-border payments. NFT Mortgages.</p>
     </div>
   );
-
 };
 
 export { SplashMain };

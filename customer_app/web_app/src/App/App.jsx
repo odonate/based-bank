@@ -22,6 +22,8 @@ function App() {
       {/* Public Pages */}
       {pages.PUBLIC_PAGE.route}
       {pages.REGISTER_PAGE.route}
+      {pages.LOGIN_PAGE.route}
+      {pages.DEPOSIT_PAGE.route}
     </Routes>
   );
 
