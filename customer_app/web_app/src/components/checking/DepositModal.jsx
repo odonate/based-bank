@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import BigNumber from 'bignumber.js';
 
+import { defluxActions } from '@actions';
 import { shiftDecimals } from '@utils';
-
 import { networkConstants } from '@constants';
-import styles from '@styles';
-
 import { useMetaMask } from '@hooks';
+
+import styles from '@styles';
 
 const DepositModal = ({ setIsOpen }) => {
   const { account } = useMetaMask();
@@ -15,9 +15,9 @@ const DepositModal = ({ setIsOpen }) => {
   const login = useSelector(state => state.authService.login);
 
   const [deposit, setDeposit] = useState({
-    accountId: "", // TODO:
-    tokenId: "0x75faf114eafb1bdbe2f0316df893fd58ce46aa4d",
-    amount: "",
+    accountId: '5daae5cd-6dfb-5559-aea8-8d662c4abac0', // TODO: get the account ID.
+    tokenId: '0x75faf114eafb1bdbe2f0316df893fd58ce46aa4d',
+    amount: '',
     fromAddress: account,
   });
   
@@ -46,6 +46,7 @@ const DepositModal = ({ setIsOpen }) => {
     const amount = shiftDecimals(deposit.amount, 6);
     const decimalAmount = new BigNumber(amount);
     const decimalApprovedAmount = new BigNumber(approvedAmount || '0');
+    console.log("Shifted:", amount);
     console.log("AMOUNT:", decimalAmount);
     console.log("APPROVED:", decimalApprovedAmount);
     try {
@@ -54,9 +55,11 @@ const DepositModal = ({ setIsOpen }) => {
       if (decimalAmount.lte(decimalApprovedAmount)) {
         // Already approved. Deposit.
         console.log("Already approved:", decimalAmount, " < ", decimalApprovedAmount);
+        dispatch(defluxActions.createDeposit(deposit));
       } else {
-        // Need to approved. Then deposit.
+        // Need to approve. Then deposit.
         approveTxHash = await approveTokens(gatewayAddress, amount);
+        dispatch(defluxActions.createDeposit(deposit));
       }
     } catch (error) {
       console.error("Error approving ERC20 token:", error);

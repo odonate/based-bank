@@ -1,6 +1,7 @@
 const DEFAULT_TIMEOUT_MS = 5000; // 5 seconds.
 
 function handleResponse(response, reloadOn401 = true) {
+  console.log(response);
   return response.text().then((text) => {
     const data = text && JSON.parse(text);
     if (!response.ok) {

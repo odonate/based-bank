@@ -135,6 +135,10 @@ export const MetaMaskProvider = ({ children }) => {
         const approveData = tokenContract.methods.approve(spender, amount).encodeABI();
         // Slippage tolerace calculation: 0.5%
         const gasPrice = await library.eth.getGasPrice();
+        console.log("Account:", account);
+        console.log("Token:", tokenAddress);
+        console.log("Data:", approveData);
+        console.log("Gas Price", gasPrice);
         return new Promise((resolve, reject) => {
           const approveTx = library.eth.sendTransaction({
             from: account,

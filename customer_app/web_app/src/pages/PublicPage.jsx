@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { Splash } from '@components/splash';
 import { NavBar } from '@components/core';
 
@@ -10,6 +9,7 @@ const PublicPage = (props) => {
     <div className={styles.container}>
       <NavBar/>
       <Splash/>
+      
     </div>
   );
 };

@@ -27,7 +27,7 @@ const networkParams = {
   // },
   "421614": {
     chainId: "0x66eee",
-    rpcUrls: ["https://arbitrum-sepolia.blockpi.network/v1/rpc/public	"],
+    rpcUrls: ["https://sepolia-rollup.arbitrum.io/rpc"],
     chainName: "Arbitrum Sepolia",
     nativeCurrency: { name: "Ether", decimals: 18, symbol: "ETH" },
     blockExplorerUrls: ["https://sepolia.arbiscan.io/"],

@@ -19,7 +19,7 @@ module.exports = {
       '@components': path.resolve(__dirname, 'src/components'),
       '@images': path.resolve(__dirname, 'src/images'),
       '@actions': path.resolve(__dirname, 'src/actions'),
-      '@services': path.resolve(__dirname, 'src/service'),
+      '@services': path.resolve(__dirname, 'src/services'),
       '@constants': path.resolve(__dirname, 'src/constants'),
       '@hooks': path.resolve(__dirname, 'src/hooks'),
       '@utils': path.resolve(__dirname, 'src/utils'),
@@ -105,6 +105,16 @@ module.exports = {
 	pathRewrite: {
 	  '^/web_api': ''
 	},
+      },
+      '/deflux_api': {
+	target: {
+	  host: '0.0.0.0',
+	  protocol: 'http',
+	  port: 8081,
+	},
+	pathRewrite: {
+	  '^/deflux_api': ''
+	},
       }
     },
   },
@@ -112,6 +122,7 @@ module.exports = {
     // global app config object
     config: JSON.stringify({
       web_api: 'web_api',
+      deflux_api: 'deflux_api',
     })
   }
 }
