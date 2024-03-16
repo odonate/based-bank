@@ -1,17 +1,20 @@
 import React from 'react';
 
-import { NavBar } from '@components/core';
-// import { DashboardManager } from '@components/account';
+import { NavBar, SideBar } from '@components/core';
+import { Manager } from '@components/dashboard';
 
 import styles from '@styles';
 
-const AccountPage = (props) => {
+const DashboardPage = (props) => {
   return (
     <div className={styles.container}>
       <NavBar/>
-      {/* <DashboardManager/> */}
+      <div className={styles.sideBarContainer}>
+        <SideBar/>
+        <Manager/>
+      </div>
     </div>
   );
 };
 
-export default AccountPage;
+export default DashboardPage;

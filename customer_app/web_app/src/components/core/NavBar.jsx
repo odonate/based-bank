@@ -35,7 +35,6 @@ const NavBarPages = () => {
 
 const NavBarWallet = () => {
   const dispatch = useDispatch();
-  const register = useSelector(state => state.authService.register);
   const login = useSelector(state => state.authService.login);
 
   
@@ -50,8 +49,14 @@ const NavBarWallet = () => {
 
   return (
     <div className={styles.navBarWallet}>
-      {login ? logoutButton : ''}
-      {!login ? (register ? loginButton : registerButton) : ''}
+      {login ? (
+        logoutButton
+      ) : (
+        <>
+          {loginButton}
+          {registerButton}
+        </>
+      )}
     </div>
   );
 };
