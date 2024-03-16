@@ -1,0 +1,51 @@
+.button {
+    background: rgb(8, 4, 4);
+    color: rgb(217, 217, 217);
+    font-family: "Proto Mono";
+    border:none;
+    position:relative;
+    font-size: 12px;
+    padding: 10px 12px;
+    cursor:pointer;
+    transition:200ms ease all;
+    outline:none;
+    text-decoration: none;
+    text-align: center;
+    z-index: 1;
+}
+
+.button:hover {
+  color: rgb(55, 115, 245);
+}
+
+.actionButtonContainer {
+    width: 100%;
+    margin-left: auto;
+    box-sizing: border-box;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.actionButton {
+    height: 36px;
+    cursor: pointer;
+    padding: 8px 8px;
+    background: rgb(55, 115, 245);
+    border-color: rgb(55, 115, 245);
+    color: rgb(217, 217, 217);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+    font-family: "Proto Mono";
+    margin-top: 8px;
+    margin-left: 24px;
+    margin-right: 24px;
+    margin-bottom: 16px;
+}
+
+.actionButton:hover {
+    background: rgb(8, 4, 4);
+    border-color: rgb(55, 115, 245);
+    color: rgb(21, 217, 217);
+}

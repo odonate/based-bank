@@ -1,0 +1,21 @@
+.navBar {
+    width: -webkit-fill-available;
+    width: -moz-available;
+    width: fill-available;
+  height: 8vh;
+  margin: 0 auto;
+  display: flex;
+  z-index: 1;
+  background: rgb(8, 4, 4);
+  align-items: center;
+  padding-left: 3vw;
+  padding-right: 3vw;
+  border-bottom: 1px solid rgb(48, 48, 48);
+  justify-content: space-between;
+}
+
+.navBarPages {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}

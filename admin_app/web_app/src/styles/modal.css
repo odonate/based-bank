@@ -1,0 +1,119 @@
+.modalOverlay {    
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9998;
+    position: fixed;
+    background: rgba(8, 4, 4, 0.8);
+    padding-top: 80px;
+}
+
+.modal {
+    top: 50%;
+    left: 50%;
+    border: 1px solid rgb(48, 48, 48);
+    z-index: 9999;
+    overflow: hidden;
+    position: fixed;
+    transform: translateX(-50%) translateY(-50%);
+    background: rgb(8, 4, 4);
+    border-radius: 4px;
+    padding: 24px 24px 0px;
+    max-height: 500px;
+}
+
+.modalContent {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    position: relative;
+    background: transparent;
+    flex-direction: column;
+}
+
+.modalHeader {
+    border-bottom: 1px solid rgb(48, 48, 48);
+    margin-bottom: 16px;
+}
+
+.modalHeaderContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modalHeaderContent {
+    width: auto;
+    height: auto;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    flex-direction: row;
+    justify-content: normal;
+}
+
+.modalBodyButtonHolder {
+    width: auto;
+    height: auto;
+    display: flex;
+    align-items: normal;
+    flex-direction: column;
+    justify-content: normal;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 300px;
+}
+
+.modalBodyButton {
+    width: 332px;
+    height: 42px;
+    cursor: pointer;
+    background: rgb(55, 115, 245);
+    border-color: rgb(55, 115, 245);
+    color: rgb(217, 217, 217);
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 4px;
+    font-family: "Proto Mono";
+    padding-left: 24px;
+    padding-right: 24px;
+    margin: 5px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.modalBodyButton:hover {
+    background: rgb(8, 4, 4);
+    border-color: rgb(55, 115, 245);
+    color: rgb(21, 217, 217);
+}
+
+.modalBodyButtonLogo {
+    width: 30px;
+    height: 30px;
+    padding-right: 10px;
+}
+
+.modalBodyHeader {
+    font-size: 12px;
+    padding-left: 5px;
+    padding-bottom: 10px;
+}
+
+.modalBodyFooter {
+    width: 336px;
+    line-height: 150%;
+    font-size: 12px;
+    padding-top: 24px;
+    text-align: center;
+    padding-bottom: 24px;
+}
+
+.divider {
+    height: 1px;
+    background-color: rgb(48, 48, 48);
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
