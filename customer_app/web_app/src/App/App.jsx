@@ -23,7 +23,7 @@ function App() {
       {pages.PUBLIC_PAGE.route}
       {pages.REGISTER_PAGE.route}
       {pages.LOGIN_PAGE.route}
-      {pages.DEPOSIT_PAGE.route}
+      {pages.DASHBOARD_PAGE.route}
     </Routes>
   );
 

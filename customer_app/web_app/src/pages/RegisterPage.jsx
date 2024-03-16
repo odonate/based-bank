@@ -1,14 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { NavBar, Link } from '@components/core';
 import { pages } from '@pages';
+import { authActions } from '@actions';
 
 import styles from '@styles';
 
 const RegisterPage = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
+  const register = useSelector(state => state.authService.register);
+  useEffect(() => {
+    if (register) {
+      navigate(pages.LOGIN_PAGE.path, { state: { from: location }});
+    }
+  }, [register]);
   const [user, setUser] = useState({
     email: '',
     username: '',
@@ -43,12 +52,7 @@ const RegisterPage = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(user);
-    setUser({
-      email: '',
-      username: '',
-      password: '',
-    });
-    navigate(pages.LOGIN_PAGE.path, { state: { from: location }});
+    dispatch(authActions.registerUser(user.email, user.username, user.password));
     // register + navigate.
   };
   const form = (

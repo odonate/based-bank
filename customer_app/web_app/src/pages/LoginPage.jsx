@@ -1,13 +1,24 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import { NavBar, Link } from '@components/core';
 import { pages } from '@pages';
+import { authActions } from '@actions';
+
 import styles from '@styles';
 
 const LoginPage = (props) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const dispatch = useDispatch();
+  
+  const login = useSelector(state => state.authService.login);
+  useEffect(() => {
+    if (login && login.userId != undefined) {
+      navigate(pages.DASHBOARD_PAGE.path, { state: { from: location }});
+    }
+  }, [login]);
 
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({
@@ -41,10 +52,11 @@ const LoginPage = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(user);
-    setUser({
-      username: '',
-      password: '',
-    });
+    dispatch(authActions.loginUser(user.username, user.password));
+    // setUser({
+    //   username: '',
+    //   password: '',
+    // });
     // login + navigate.
   };
   const form = (
