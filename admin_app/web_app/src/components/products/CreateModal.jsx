@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Menu, MenuItem } from '@szhsin/react-menu';
 
+import { defluxActions } from '@actions';
 import { networkConstants } from '@constants';
 
 import styles from '@styles';
@@ -20,6 +21,7 @@ const CreateModal = ({ setIsCreateOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(defluxActions.createEvmProduct(product));
     console.log("Create", product);
     // dispathc some stuff
     setIsCreateOpen(false);
