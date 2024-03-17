@@ -27,8 +27,8 @@ const Manager = ({}) => {
 
   const handleApplication = () => {
     const application = {
-      productId: 'dummy-id',
-      accountId: 'dummy-account',
+      productId: '22591cc4-ecd1-5cec-82ac-5323adc06962',
+      accountId: '35daf0e3-f4f4-5e98-8e3d-7dae966a8bbb',
     };
     console.log(application);
     dispatch(defluxActions.createProductApplication(application));

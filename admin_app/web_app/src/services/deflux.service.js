@@ -41,7 +41,27 @@ function listProductApplications() {
     });
 }
 
+function evaluateProductApplication(application) {
+  const body = JSON.stringify({
+    accountId: application.accountId,
+    approve: application.approve,
+  })
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: body,
+    timeout: 60000,
+  };
+  return fetchWithTimeout(`/${config.deflux_api}/v1/product-application/evaluate`, requestOptions)
+    .then(json => handleResponse(json, false))
+    .then((response) => {
+      console.log(response);
+      return response;
+    });
+}
+
 export const defluxService = {
   createEvmProduct,
   listProductApplications,
+  evaluateProductApplication,
 }
