@@ -28,3 +28,25 @@
     text-align: left;
     width: 100%;
 }
+
+.inputLabel {
+    font-size: 12px;
+    padding: 0px 0px 10px 0px;
+    color: rgb(128, 128, 128);
+}
+
+.formInput {
+    background-color: rgb(8, 4, 4);
+    border: 1px solid rgb(48, 48, 48);
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-family: "Proto Mono";
+    padding: 0px 10px 0px 10px;
+    color: rgb(217,217,217);
+    min-height: 40px;
+}
+
+.formInputClicked {
+    border-color: rgb(55, 115, 245);
+    outline: none;
+}

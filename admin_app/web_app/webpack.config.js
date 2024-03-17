@@ -20,6 +20,7 @@ module.exports = {
       '@actions': path.resolve(__dirname, 'src/actions'),
       '@services': path.resolve(__dirname, 'src/service'),
       '@constants': path.resolve(__dirname, 'src/constants'),
+      '@images': path.resolve(__dirname, 'src/images'),
     },
   },
   module: {

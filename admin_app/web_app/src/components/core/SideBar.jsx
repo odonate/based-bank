@@ -13,9 +13,15 @@ export function SideBar({}) {
       to={pages.DASHBOARD_PAGE.path}
       className={pages.DASHBOARD_PAGE.path == location.pathname ? styles.sideButtonCurrent : styles.sideButton}>Dashboard</Link>
   );
+  const productButton = (
+    <Link
+      to={pages.PRODUCT_PAGE.path}
+      className={pages.PRODUCT_PAGE.path == location.pathname ? styles.sideButtonCurrent : styles.sideButton}>Products</Link>
+  );
   return (
     <div className={styles.sideBar}>
       {dashboardButton}
+      {productButton}
     </div>
   );
 };

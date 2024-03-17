@@ -5,6 +5,7 @@ import { PublicElement, AuthElement } from '@components/routing';
 
 import LoginPage from './LoginPage';
 import DashboardPage from './DashboardPage';
+import ProductPage from './ProductPage';
 
 function Page(description, path, element) {
   const page = {
@@ -36,4 +37,5 @@ export const pages = {
 
   // Auth pages.
   DASHBOARD_PAGE: AuthPage('Dashboard', '/dashboard', <DashboardPage/>),
+  PRODUCT_PAGE: AuthPage('Product', '/product', <ProductPage/>),
 };
