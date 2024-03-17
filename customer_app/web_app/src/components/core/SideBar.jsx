@@ -20,13 +20,13 @@ export function SideBar({}) {
   );
   const savingsButton = (
     <Link
-      to={pages.PUBLIC_PAGE.path}
-      className={pages.PUBLIC_PAGE.path == location.pathname ? styles.sideButtonCurrent : styles.sideButton}>Savings</Link>
+      to={pages.SAVINGS_PAGE.path}
+      className={pages.SAVINGS_PAGE.path == location.pathname ? styles.sideButtonCurrent : styles.sideButton}>Savings</Link>
   );
   const loanButton = (
     <Link
-      to={pages.PUBLIC_PAGE.path}
-      className={pages.PUBLIC_PAGE.path == location.pathname ? styles.sideButtonCurrent : styles.sideButton}>Loan</Link>
+      to={pages.LOAN_PAGE.path}
+      className={pages.LOAN_PAGE.path == location.pathname ? styles.sideButtonCurrent : styles.sideButton}>Loan</Link>
   );
   return (
     <div className={styles.sideBar}>

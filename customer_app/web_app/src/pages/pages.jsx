@@ -8,6 +8,8 @@ import RegisterPage from './RegisterPage';
 import LoginPage from './LoginPage';
 import DashboardPage from './DashboardPage';
 import CheckingPage from './CheckingPage';
+import SavingsPage from './SavingsPage';
+import LoanPage from './LoanPage';
 
 function Page(description, path, element) {
   const page = {
@@ -42,4 +44,6 @@ export const pages = {
   // Auth pages.
   DASHBOARD_PAGE: AuthPage('Dashboard', '/dashboard', <DashboardPage/>),
   CHECKING_PAGE: AuthPage('Checking', '/checking', <CheckingPage/>),
+  SAVINGS_PAGE: AuthPage('Savings', '/savings', <SavingsPage/>),
+  LOAN_PAGE: AuthPage('Loan', '/loan', <LoanPage/>),
 };

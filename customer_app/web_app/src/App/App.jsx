@@ -25,6 +25,8 @@ function App() {
       {pages.LOGIN_PAGE.route}
       {pages.DASHBOARD_PAGE.route}
       {pages.CHECKING_PAGE.route}
+      {pages.SAVINGS_PAGE.route}
+      {pages.LOAN_PAGE.route}
     </Routes>
   );
 
