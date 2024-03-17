@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { DepositModal } from '.';
+import { DepositModal, WithdrawalModal } from '.';
 import { SelectWalletModal } from '@components/core';
 import { defluxActions } from '@actions';
 
@@ -53,8 +53,8 @@ const Manager = ({}) => {
           {'By connecting your wallet you can make a deposit your Based Bank checking account.'}
         </li>
       </ol>
-      <button onClick={handleDeposit}>DEPOSIT</button>
-      <button onClick={handleWithdrawal}>WITHDRAWAL</button>
+      <button className={styles.actionButton} onClick={handleDeposit}>DEPOSIT</button>
+      <button className={styles.actionButton} onClick={handleWithdrawal}>WITHDRAWAL</button>
       <div>
         {balances && balances.length > 0 && (
           <div>
@@ -78,6 +78,7 @@ const Manager = ({}) => {
       
       {isConnectOpen && <SelectWalletModal setIsOpen={setIsConnectOpen}/>}
       {isDepositOpen && <DepositModal setIsOpen={setIsDepositOpen}/>}
+      {isWithdrawalOpen && <WithdrawalModal setIsOpen={setIsWithdrawalOpen}/>}
     </div>
   );
 };

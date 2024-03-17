@@ -49,7 +49,7 @@ const NavBarWallet = () => {
   const networkDropDown = <NetworkDropDown/>;  
   const registerButton = <Link to={pages.REGISTER_PAGE.path}>REGISTER</Link>;
   const loginButton = <Link to={pages.LOGIN_PAGE.path}>LOGIN</Link>;
-  const logoutButton = <button onClick={handleLogout}>LOGOUT</button>;
+  const logoutButton = <button className={styles.button} onClick={handleLogout}>LOGOUT</button>;
 
 
   return (
