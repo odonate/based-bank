@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTable } from 'react-table';
 
+import { defluxActions } from '@actions';
 import styles from '@styles';
 
 const ProductId = ({ row }) => {
@@ -32,6 +33,12 @@ const Approve = ({ row }) => {
   const dispatch = useDispatch();
   const handleApprove = () => {
     console.log("APPROVING");
+    const application = {
+      accountId: '35daf0e3-f4f4-5e98-8e3d-7dae966a8bbb',
+      approve: true,
+    };
+    console.log(application);
+    dispatch(defluxActions.evaluateProductApplication(application));
   };
   return (
     <div className={styles.tableColumnHeader}>
@@ -44,6 +51,13 @@ const Reject = ({ row }) => {
   const dispatch = useDispatch();
   const handleReject = () => {
     console.log("REJECTING");
+    console.log("APPROVING");
+    const application = {
+      accountId: '35daf0e3-f4f4-5e98-8e3d-7dae966a8bbb',
+      approve: false, 
+    };
+    console.log(application);
+    dispatch(defluxActions.evaluateProductApplication(application));
   };
   return (
     <div className={styles.tableColumnHeader}>
