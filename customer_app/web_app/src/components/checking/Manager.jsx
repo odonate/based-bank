@@ -27,7 +27,7 @@ const Manager = ({}) => {
   const topBar = (
     <div className={styles.managerTopBar}>
       <div>Connect your wallet to use Based Bank.</div>
-      <button className={styles.managerTopBarButton} onClick={handleConnect}>Connect</button>
+      <button className={styles.actionButton} onClick={handleConnect}>Connect</button>
     </div>
   );
 
