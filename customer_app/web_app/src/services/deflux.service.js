@@ -64,8 +64,60 @@ function listBalances(accountId) {
     });
 }
 
+// Product Application Services.
+
+function createProductApplication(application) {
+  const body = JSON.stringify({
+    productId: application.productId,
+    accountId: application.accountId,
+  })
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: body,
+    timeout: 60000,
+  };
+  return fetchWithTimeout(`/${config.deflux_api}/v1/product-application/create`, requestOptions)
+    .then(json => handleResponse(json, false))
+    .then((response) => {
+      console.log(response);
+      return response;
+    });
+}
+
+function getProductApplication(accountId) {
+  const requestOptions = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  };
+  const url = `${config.deflux_api}/v1/product-application/get?account_id=${accountId}`
+  console.log(url);
+  return fetchWithTimeout(url, requestOptions)
+    .then(json => handleResponse(json, false))
+    .then((response) => {
+      console.log(response);
+      return response;
+    });
+}
+
+function listProductApplications() {
+  const requestOptions = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  };
+  return fetchWithTimeout(`${config.deflux_api}/v1/product-application/list`, requestOptions)
+    .then(json => handleResponse(json, false))
+    .then((response) => {
+      console.log(response);
+      return response.productApplications;
+    });
+}
+
 export const defluxService = {
   createDeposit,
   createWithdrawal,
   listBalances,
+  createProductApplication,
+  getProductApplication,
+  listProductApplications,
 }

@@ -55,8 +55,63 @@ function listBalances(accountId) {
   };
 }
 
+
+function createProductApplication(application) {
+  function success(application) {
+    return { type: defluxConstants.CREATE_PRODUCT_APPLICATION_SUCCESS, application };
+  }
+  function failure(error) {
+    return { type: defluxConstants.CREATE_PRODUCT_APPLICATION_FAILURE, error };
+  }
+
+  return (dispatch) => {
+    defluxService.createProductApplication(application)
+      .then(
+	(application) => dispatch(success(application)),
+	(error) => dispatch(failure(error.toString()))
+      );
+  };
+}
+
+function getProductApplication(application) {
+  function success(application) {
+    return { type: defluxConstants.GET_PRODUCT_APPLICATION_SUCCESS, application };
+  }
+  function failure(error) {
+    return { type: defluxConstants.GET_PRODUCT_APPLICATION_FAILURE, error };
+  }
+
+  return (dispatch) => {
+    defluxService.getProductApplication(application)
+      .then(
+	(application) => dispatch(success(application)),
+	(error) => dispatch(failure(error.toString()))
+      );
+  };
+}
+
+function listProductApplications(application) {
+  function success(applications) {
+    return { type: defluxConstants.LIST_PRODUCT_APPLICATION_SUCCESS, applications };
+  }
+  function failure(error) {
+    return { type: defluxConstants.LIST_PRODUCT_APPLICATION_FAILURE, error };
+  }
+
+  return (dispatch) => {
+    defluxService.listProductApplications(applications)
+      .then(
+	(applications) => dispatch(success(applications)),
+	(error) => dispatch(failure(error.toString()))
+      );
+  };
+}
+
 export const defluxActions = {
   createDeposit,
   createWithdrawal,
   listBalances,
+  createProductApplication,
+  getProductApplication,
+  listProductApplications,
 }
