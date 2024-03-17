@@ -9,7 +9,7 @@ import { useMetaMask } from '@hooks';
 
 import styles from '@styles';
 
-const accountId = '5daae5cd-6dfb-5559-aea8-8d662c4abac0';
+const accountId = '35daf0e3-f4f4-5e98-8e3d-7dae966a8bbb';
 
 const RepayModal = ({ setIsOpen }) => {
   const { account, networkId } = useMetaMask();
@@ -58,11 +58,11 @@ const RepayModal = ({ setIsOpen }) => {
       if (decimalAmount.lte(decimalApprovedAmount)) {
         // Already approved. Repay.
         console.log("Already approved:", decimalAmount, " < ", decimalApprovedAmount);
-        dispatch(defluxActions.createRepay(repay));
+        dispatch(defluxActions.createDeposit(repay));
       } else {
         // Need to approve. Then repay.
         approveTxHash = await approveTokens(gatewayAddress, shifted);
-        dispatch(defluxActions.createRepay(repay));
+        dispatch(defluxActions.createDeposit(repay));
       }
     } catch (error) {
       console.error("Error approving ERC20 token:", error);

@@ -32,11 +32,19 @@ const networkParams = {
     nativeCurrency: { name: "Ether", decimals: 18, symbol: "ETH" },
     blockExplorerUrls: ["https://sepolia.arbiscan.io/"],
   },
+  "84532": {
+    chainId: "0x14a34",
+    rpcUrls: ["https://sepolia.base.org"],
+    chainName: "Base Sepolia",
+    nativeCurrency: { name: "Ether", decimals: 18, symbol: "ETH" },
+    blockExplorerUrls: ["https://sepolia.basescan.io/"],
+  },
 };
 
 const venueToChainId = {
   "ethereum": "1",
   "base": "8453",
+  "base_sepolia": "84532",
   "arbitrum": "42161",
   "arbitrum_sepolia": "421614",
 }
@@ -44,6 +52,7 @@ const venueToChainId = {
 const chainIdToVenue = {
   "1": "ethereum",
   "8453": "base",
+  "84532": "base_sepolia",
   "42161": "arbitrum",
   "421614": "arbitrum_sepolia",
 }
@@ -51,6 +60,7 @@ const chainIdToVenue = {
 const chainIdToLogo = {
   "1": EthereumLogo,
   "8453": BaseLogo,
+  "84532": BaseLogo,
   "42161": ArbitrumLogo,
   "421614": ArbitrumLogo,
 }
@@ -59,6 +69,7 @@ const chainIdToLogo = {
 const chainIdToGateway = {
   //"1": "",
   "8453": "",
+  "84532": "0x5aa5e6d01a05f86d9c21dc0f14e8deba38f057b0",
   "42161": "",
   "421614": "0xd9184dfb6d518d300759326f2cd2cd51bce31e56",
 }
