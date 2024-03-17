@@ -13,6 +13,11 @@ export function SideBar({}) {
       to={pages.DASHBOARD_PAGE.path}
       className={pages.DASHBOARD_PAGE.path == location.pathname ? styles.sideButtonCurrent : styles.sideButton}>Dashboard</Link>
   );
+  const ledgerButton = (
+    <Link
+      to={pages.LEDGER_PAGE.path}
+      className={pages.LEDGER_PAGE.path == location.pathname ? styles.sideButtonCurrent : styles.sideButton}>Ledger</Link>
+  );
   const productButton = (
     <Link
       to={pages.PRODUCT_PAGE.path}
@@ -26,6 +31,7 @@ export function SideBar({}) {
   return (
     <div className={styles.sideBar}>
       {dashboardButton}
+      {ledgerButton}
       {productButton}
       {applicationsButton}
     </div>

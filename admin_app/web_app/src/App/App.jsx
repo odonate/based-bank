@@ -23,6 +23,7 @@ function App() {
       {pages.LOGIN_PAGE.route}
       {/* Auth pages */}
       {pages.DASHBOARD_PAGE.route}
+      {pages.LEDGER_PAGE.route}
       {pages.PRODUCT_PAGE.route}
       {pages.APPLICATIONS_PAGE.route}
     </Routes>

@@ -54,9 +54,26 @@ function evaluateProductApplication(application) {
       );
   };
 }
+function listBalances(accountIds) {
+  function success(balances) {
+    return { type: defluxConstants.LIST_BALANCES_SUCCESS, balances };
+  }
+  function failure(error) {
+    return { type: defluxConstants.LIST_BALANCES_FAILURE, error };
+  }
+
+  return (dispatch) => {
+    defluxService.listBalances(accountIds)
+      .then(
+	(balances) => dispatch(success(balances)),
+	(error) => dispatch(failure(error.toString()))
+      );
+  };
+}
 
 export const defluxActions = {
   createEvmProduct,
   listProductApplications,
   evaluateProductApplication,
+  listBalances,
 }
