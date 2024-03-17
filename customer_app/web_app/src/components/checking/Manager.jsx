@@ -9,12 +9,14 @@ import { useMetaMask } from '@hooks';
 
 import styles from '@styles';
 
+const accountId = '5daae5cd-6dfb-5559-aea8-8d662c4abac0';
+
 const Manager = ({}) => {
   const { account } = useMetaMask();
   const balances = useSelector(state => state.defluxService.balances);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(defluxActions.listBalances('5daae5cd-6dfb-5559-aea8-8d662c4abac0'));
+    dispatch(defluxActions.listBalances(accountId));
   }, []);
   
   const [isConnectOpen, setIsConnectOpen] = useState(false);

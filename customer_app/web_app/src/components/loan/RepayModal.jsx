@@ -11,12 +11,12 @@ import styles from '@styles';
 
 const accountId = '5daae5cd-6dfb-5559-aea8-8d662c4abac0';
 
-const DepositModal = ({ setIsOpen }) => {
+const RepayModal = ({ setIsOpen }) => {
   const { account, networkId } = useMetaMask();
   const dispatch = useDispatch();
   const login = useSelector(state => state.authService.login);
 
-  const [deposit, setDeposit] = useState({
+  const [repay, setRepay] = useState({
     accountId: accountId, // TODO: get the account ID.
     tokenId: '0x75faf114eafb1bdbe2f0316df893fd58ce46aa4d',
     amount: '',
@@ -26,15 +26,15 @@ const DepositModal = ({ setIsOpen }) => {
   
   const { useApprovedAmount, useTokenApproval } = useMetaMask();
   const gatewayAddress = networkConstants.ID_TO_GATEWAY[networkId];
-  const { approvedAmount, setApprovedAmount } = useApprovedAmount(deposit.tokenId, gatewayAddress);
+  const { approvedAmount, setApprovedAmount } = useApprovedAmount(repay.tokenId, gatewayAddress);
   console.log("APPROVED AMOUNT:", approvedAmount);
-  const { isApproving, setIsApproving, error, approveTokens } = useTokenApproval(deposit.tokenId);
+  const { isApproving, setIsApproving, error, approveTokens } = useTokenApproval(repay.tokenId);
   
   const modalHeader = ( 
     <div className={styles.modalHeader}>
       <div className={styles.modalHeaderContainer}>
         <div className={styles.modalHeaderContent}>
-          <div>Deposit USDC</div>
+          <div>Repay USDC</div>
         </div>
         <button onClick={() => setIsOpen(false)}>X</button>
       </div>
@@ -42,11 +42,11 @@ const DepositModal = ({ setIsOpen }) => {
   );
 
   const [isApproved, setIsApproved] = useState(false);
-  const handleDeposit = async (e) => {
-    if (isApproving || !deposit.amount) return;
+  const handleRepay = async (e) => {
+    if (isApproving || !repay.amount) return;
     setIsApproving(true);
 
-    const shifted = shiftDecimals(deposit.amount, 6);
+    const shifted = shiftDecimals(repay.amount, 6);
     const decimalAmount = new BigNumber(shifted);
     const decimalApprovedAmount = new BigNumber(approvedAmount || '0');
     console.log("Shifted:", shifted);
@@ -56,13 +56,13 @@ const DepositModal = ({ setIsOpen }) => {
       let approveTxHash = '';
 
       if (decimalAmount.lte(decimalApprovedAmount)) {
-        // Already approved. Deposit.
+        // Already approved. Repay.
         console.log("Already approved:", decimalAmount, " < ", decimalApprovedAmount);
-        dispatch(defluxActions.createDeposit(deposit));
+        dispatch(defluxActions.createRepay(repay));
       } else {
-        // Need to approve. Then deposit.
+        // Need to approve. Then repay.
         approveTxHash = await approveTokens(gatewayAddress, shifted);
-        dispatch(defluxActions.createDeposit(deposit));
+        dispatch(defluxActions.createRepay(repay));
       }
     } catch (error) {
       console.error("Error approving ERC20 token:", error);
@@ -71,10 +71,10 @@ const DepositModal = ({ setIsOpen }) => {
       setIsOpen(false);
     }
     
-    console.log("Create Deposit", deposit);
+    console.log("Create Repay", repay);
     setIsApproved(true);
   };
-  const depositButton = <button onClick={handleDeposit} className={styles.actionButton}>DEPOSIT</button>;
+  const repayButton = <button onClick={handleRepay} className={styles.actionButton}>REPAY</button>;
 
   return (
     <div>
@@ -84,13 +84,13 @@ const DepositModal = ({ setIsOpen }) => {
           {modalHeader}
 
           <div>
-            <DepositInput deposit={deposit} setDeposit={setDeposit}/>
+            <RepayInput repay={repay} setRepay={setRepay}/>
             <div className={styles.divider}/>
 
             {isApproving ? <Approving/> : ''}
             
             <div className={styles.actionButtonContainer}>
-              {depositButton}
+              {repayButton}
             </div>
           </div>
         </div>
@@ -99,12 +99,12 @@ const DepositModal = ({ setIsOpen }) => {
   );
 };
 
-const DepositInput = ({ deposit, setDeposit }) => {
+const RepayInput = ({ repay, setRepay }) => {
   const [isClicked, setIsClicked] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setDeposit({
-      ...deposit,
+    setRepay({
+      ...repay,
       [name]: value,
     });
   };
@@ -121,7 +121,7 @@ const DepositInput = ({ deposit, setDeposit }) => {
             type="text"
             name="amount"
             placeholder={'0'}
-            value={deposit ? deposit.amount : ''}
+            value={repay ? repay.amount : ''}
             onChange={handleChange}
             autoComplete='off'
             className={styles.input}
@@ -132,7 +132,7 @@ const DepositInput = ({ deposit, setDeposit }) => {
   );
 };
 
-const Approving = ({ deposit }) => {
+const Approving = ({ repay }) => {
   return (
     <div>
       Approving...
@@ -140,4 +140,4 @@ const Approving = ({ deposit }) => {
   );
 };
 
-export { DepositModal };
+export { RepayModal };

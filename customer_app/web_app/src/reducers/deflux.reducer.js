@@ -44,11 +44,11 @@ const balances = (state = null, action) => {
 const productApplication = (state = null, action) => {
   switch (action.type) {
   case defluxConstants.CREATE_PRODUCT_APPLICATION_SUCCESS:
-    return action;
+    return action.application;
   case defluxConstants.CREATE_PRODUCT_APPLICATION_FAILURE:
     return state;
   case defluxConstants.GET_PRODUCT_APPLICATION_SUCCESS:
-    return action;
+    return action.application;
   case defluxConstants.GET_PRODUCT_APPLICATION_FAILURE:
     return state;
   case defluxConstants.PRODUCT_APPLICATION_CLEAR:
