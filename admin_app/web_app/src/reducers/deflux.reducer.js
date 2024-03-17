@@ -28,7 +28,21 @@ const productApplications = (state = [], action) => {
   }
 };  
 
+const balances = (state = [], action) => {
+  switch (action.type) {
+  case defluxConstants.LIST_BALANCES_SUCCESS:
+      return action.balances;
+    case defluxConstants.LIST_BALANCES_FAILURE:
+      return state;
+    case defluxConstants.LIST_BALANCES_CLEAR:
+      return null;
+    default:
+      return state;
+  }
+};
+
 export const defluxServiceReducer = combineReducers({
   evmProduct,
   productApplications,
+  balances,
 });

@@ -41,7 +41,28 @@ function listProductApplications() {
     });
 }
 
+// Ledger Services.
+
+function listBalances(accountIds) {
+  const requestOptions = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  };
+
+  // const url = `${config.deflux_api}/v1/balances/list?account_ids=${accountId}`
+  const accountsQuery = accountIds.map(id => `account_ids=${id}`).join('&');
+  const url = `${config.deflux_api}/v1/balances/list?${accountsQuery}`;
+  console.log(url);
+  return fetchWithTimeout(url, requestOptions)
+    .then(json => handleResponse(json, false))
+    .then((response) => {
+      console.log(response);
+      return response.ledgerBalances;
+    });
+}
+
 export const defluxService = {
   createEvmProduct,
   listProductApplications,
+  listBalances,
 }

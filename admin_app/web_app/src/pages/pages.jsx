@@ -5,6 +5,7 @@ import { PublicElement, AuthElement } from '@components/routing';
 
 import LoginPage from './LoginPage';
 import DashboardPage from './DashboardPage';
+import LedgerPage from './LedgerPage';
 import ProductPage from './ProductPage';
 import ApplicationsPage from './ApplicationsPage';
 
@@ -38,6 +39,7 @@ export const pages = {
 
   // Auth pages.
   DASHBOARD_PAGE: AuthPage('Dashboard', '/dashboard', <DashboardPage/>),
+  LEDGER_PAGE: AuthPage('Ledger', '/ledger', <LedgerPage/>),
   PRODUCT_PAGE: AuthPage('Product', '/product', <ProductPage/>),
   APPLICATIONS_PAGE: AuthPage('Applications', '/applications', <ApplicationsPage/>),
 };

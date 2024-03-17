@@ -10,6 +10,7 @@ function createDeposit(deposit) {
     tokenId: deposit.tokenId,
     amount: deposit.amount,
     fromAddress: deposit.fromAddress,
+    fromVenueId: deposit.fromVenueId,
   })
   const requestOptions = {
     method: 'POST',

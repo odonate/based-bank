@@ -10,7 +10,7 @@ import { useMetaMask } from '@hooks';
 import styles from '@styles';
 
 const DepositModal = ({ setIsOpen }) => {
-  const { account } = useMetaMask();
+  const { account, networkId } = useMetaMask();
   const dispatch = useDispatch();
   const login = useSelector(state => state.authService.login);
 
@@ -19,9 +19,10 @@ const DepositModal = ({ setIsOpen }) => {
     tokenId: '0x75faf114eafb1bdbe2f0316df893fd58ce46aa4d',
     amount: '',
     fromAddress: account,
+    fromVenueId: networkConstants.ID_TO_VENUE[networkId],
   });
   
-  const { useApprovedAmount, useTokenApproval, networkId } = useMetaMask();
+  const { useApprovedAmount, useTokenApproval } = useMetaMask();
   const gatewayAddress = networkConstants.ID_TO_GATEWAY[networkId];
   const { approvedAmount, setApprovedAmount } = useApprovedAmount(deposit.tokenId, gatewayAddress);
   console.log("APPROVED AMOUNT:", approvedAmount);
