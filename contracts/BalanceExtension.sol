@@ -7,18 +7,37 @@ struct Account {
     uint32 creditLimit;
 }
 
+enum AccountInt32Param {
+  Unknown,
+  CreditLimit
+}
+
 contract BalanceExtension is Ownable {
+    event DefluxAccountInt32ParamUpdated(address account, address product, AccountInt32Param key, int32 value);
+	
   mapping(address => Account) internal _accounts;
 
-  address product;
+  address _product;
 
   uint32 maxCreditLimit;
 
+  constructor() {
+    _initializeOwner(msg.sender);
+      maxCreditLimit = 4294967295;
+  }
+  
   function init() external {
-      if (product != address(0)) {
+      if (_product != address(0)) {
 	  revert("already initialised");
       }
-      product = msg.sender;
+      _product = msg.sender;
+  }
+
+  function setProduct(address product) external {
+      if (_product != address(0)) {
+	  revert("already initialised");
+      }
+      _product = product;
   }
 
   function canDebit(address account, uint256 balance, uint256 amount) external returns (bool) {
@@ -29,6 +48,7 @@ contract BalanceExtension is Ownable {
   }
 
   function setCreditLimit(address account, uint32 creditLimit) external onlyOwner {
+      emit DefluxAccountInt32ParamUpdated(account, _product, AccountInt32Param.CreditLimit, int32(creditLimit));
       if (creditLimit > maxCreditLimit) {
 	  revert("credit limit too high");
       }
@@ -39,7 +59,4 @@ contract BalanceExtension is Ownable {
       maxCreditLimit = creditLimit;
   }
 
-  constructor() {
-    _initializeOwner(msg.sender);
-  }
 }
