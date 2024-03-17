@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { SelectWalletModal } from '@components/core';
 
+import { defluxActions } from '@actions';
 import { useMetaMask } from '@hooks';
 
 import styles from '@styles';
 
 const Manager = ({}) => {
   const { account } = useMetaMask();
+  const dispatch = useDispatch();
+  const productApplication = useSelector(state => state.defluxService.productApplication);
   
   const [isConnectOpen, setIsConnectOpen] = useState(false);
   const handleConnect = () => {
@@ -21,9 +25,18 @@ const Manager = ({}) => {
     </div>
   );
 
+  const handleApplication = () => {
+    const application = {
+      productId: '',
+      accountId: '',
+    };
+    console.log(application);
+    dispatch(defluxActions.createProductApplication(application));
+  };
   const infoHeader = (
     <div className={styles.managerInfoHeader}>
       <h2>Loan Account</h2>
+      {productApplication ? '' : <button onClick={handleApplication} className={styles.actionButton}>Apply</button>}
     </div>
   );
   

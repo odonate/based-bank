@@ -41,6 +41,36 @@ const balances = (state = null, action) => {
   }
 };
 
+const productApplication = (state = null, action) => {
+  switch (action.type) {
+  case defluxConstants.CREATE_PRODUCT_APPLICATION_SUCCESS:
+    return action;
+  case defluxConstants.CREATE_PRODUCT_APPLICATION_FAILURE:
+    return state;
+  case defluxConstants.GET_PRODUCT_APPLICATION_SUCCESS:
+    return action;
+  case defluxConstants.GET_PRODUCT_APPLICATION_FAILURE:
+    return state;
+  case defluxConstants.PRODUCT_APPLICATION_CLEAR:
+    return null;
+  default:
+    return state;
+  }
+};
+
+const productApplications = (state = null, action) => {
+  switch (action.type) {
+  case defluxConstants.LIST_PRODUCT_APPLICATIONS_SUCCESS:
+    return action;
+  case defluxConstants.LIST_PRODUCT_APPLICATIONS_FAILURE:
+    return state;
+  case defluxConstants.PRODUCT_APPLICATIONS_CLEAR:
+    return null;
+  default:
+    return state;
+  }
+};  
+
 export const defluxServiceReducer = combineReducers({
   deposit,
   withdrawal,
