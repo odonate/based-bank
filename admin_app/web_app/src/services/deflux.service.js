@@ -28,6 +28,20 @@ function createEvmProduct(evmProduct) {
     });
 }
 
+function listProductApplications() {
+  const requestOptions = {
+    method: 'GET',
+    headers: { 'Content-Type': 'application/json' },
+  };
+  return fetchWithTimeout(`${config.deflux_api}/v1/product-application/list`, requestOptions)
+    .then(json => handleResponse(json, false))
+    .then((response) => {
+      console.log(response);
+      return response.productApplications;
+    });
+}
+
 export const defluxService = {
   createEvmProduct,
+  listProductApplications,
 }

@@ -15,6 +15,20 @@ const evmProduct = (state = null, action) => {
   }
 };
 
+const productApplications = (state = [], action) => {
+  switch (action.type) {
+  case defluxConstants.LIST_PRODUCT_APPLICATIONS_SUCCESS:
+    return action.applications;
+  case defluxConstants.LIST_PRODUCT_APPLICATIONS_FAILURE:
+    return state;
+  case defluxConstants.PRODUCT_APPLICATIONS_CLEAR:
+    return null;
+  default:
+    return state;
+  }
+};  
+
 export const defluxServiceReducer = combineReducers({
   evmProduct,
+  productApplications,
 });

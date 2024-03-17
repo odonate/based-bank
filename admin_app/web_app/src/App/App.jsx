@@ -24,6 +24,7 @@ function App() {
       {/* Auth pages */}
       {pages.DASHBOARD_PAGE.route}
       {pages.PRODUCT_PAGE.route}
+      {pages.APPLICATIONS_PAGE.route}
     </Routes>
   );
 

@@ -21,6 +21,24 @@ function createEvmProduct(evmProduct) {
   };
 }
 
+function listProductApplications(applications) {
+  function success(applications) {
+    return { type: defluxConstants.LIST_PRODUCT_APPLICATIONS_SUCCESS, applications };
+  }
+  function failure(error) {
+    return { type: defluxConstants.LIST_PRODUCT_APPLICATIONS_FAILURE, error };
+  }
+
+  return (dispatch) => {
+    defluxService.listProductApplications(applications)
+      .then(
+	(applications) => dispatch(success(applications)),
+	(error) => dispatch(failure(error.toString()))
+      );
+  };
+}
+
 export const defluxActions = {
   createEvmProduct,
+  listProductApplications,
 }

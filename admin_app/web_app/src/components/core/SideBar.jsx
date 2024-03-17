@@ -18,10 +18,16 @@ export function SideBar({}) {
       to={pages.PRODUCT_PAGE.path}
       className={pages.PRODUCT_PAGE.path == location.pathname ? styles.sideButtonCurrent : styles.sideButton}>Products</Link>
   );
+  const applicationsButton = (
+    <Link
+      to={pages.APPLICATIONS_PAGE.path}
+      className={pages.APPLICATIONS_PAGE.path == location.pathname ? styles.sideButtonCurrent : styles.sideButton}>Applications</Link>
+  );
   return (
     <div className={styles.sideBar}>
       {dashboardButton}
       {productButton}
+      {applicationsButton}
     </div>
   );
 };

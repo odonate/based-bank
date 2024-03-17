@@ -58,7 +58,7 @@ const productApplication = (state = null, action) => {
   }
 };
 
-const productApplications = (state = null, action) => {
+const productApplications = (state = [], action) => {
   switch (action.type) {
   case defluxConstants.LIST_PRODUCT_APPLICATIONS_SUCCESS:
     return action;
@@ -75,4 +75,6 @@ export const defluxServiceReducer = combineReducers({
   deposit,
   withdrawal,
   balances,
+  productApplication,
+  productApplications,
 });

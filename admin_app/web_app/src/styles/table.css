@@ -1,0 +1,62 @@
+.tableContainer {
+    background: rgb(8, 4, 4);    
+    box-shadow: rgba(252, 250, 255, 0.08) 0px 2px 4px, rgb(252, 250, 255, 0.08) 0px 8px 16px;
+    border: 1px solid rgb(48, 48, 48);
+    border-radius: 4px;
+    margin-top: 25px;
+    min-height: 250px;
+    max-height: 100%;
+}
+
+.table {    
+    border: 1px solid black;
+    font-size: 0.75rem;
+    table-layout: auto;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.table thead {
+    position: sticky;
+    top: -1px;
+}
+
+.table thead th {
+    position: sticky;
+    top: 1px;
+    background: inherit;
+    padding: 8px;
+    border-bottom: none;
+    min-width: 150px; /* this will cause issues at some point */
+}
+
+.table thead .stickyBottomBorder {
+    position: sticky;
+    background: rgb(48,48,48);
+    top: 32px; /* 2 + 2 + 8 + 8 + 12 */
+}
+
+.tableTitle {
+    background: rgb(16,16,16);
+    text-align: center;
+    color: rgb(217, 21, 217);
+    padding: 5px;
+    display: flex;
+}
+
+.tableCell {
+    padding: 0.7em 0.5em;
+}
+
+.tableLoading {
+    left: 50%;
+    position: sticky;
+    padding: 50px;
+    text-align: center;
+}
+
+/* Columns */
+
+.tableColumnHeader {
+    min-width: 50px;
+}
