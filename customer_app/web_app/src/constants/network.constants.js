@@ -75,6 +75,16 @@ const chainIdToGateway = {
 }
 
 
+const chainIdToToken = {
+  //"1": "",
+  "8453": "",
+  "84532": "0x036cbd53842c5426634e7929541ec2318f3dcf7e",
+  "42161": "",
+  "421614": "0x75faf114eafb1bdbe2f0316df893fd58ce46aa4d",
+}
+
+
+
 export const networkConstants = {
   CHAIN_IDS: [1, 8453, 421614],
   PARAMS: networkParams,
@@ -82,4 +92,5 @@ export const networkConstants = {
   ID_TO_VENUE: chainIdToVenue,
   ID_TO_LOGO: chainIdToLogo,
   ID_TO_GATEWAY: chainIdToGateway,
+  ID_TO_TOKEN: chainIdToToken,
 };

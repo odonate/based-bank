@@ -18,7 +18,7 @@ const DepositModal = ({ setIsOpen }) => {
 
   const [deposit, setDeposit] = useState({
     accountId: accountId, // TODO: get the account ID.
-    tokenId: '0x75faf114eafb1bdbe2f0316df893fd58ce46aa4d',
+    tokenId: networkConstants.ID_TO_TOKEN[networkId],
     amount: '',
     fromAddress: account,
     fromVenueId: networkConstants.ID_TO_VENUE[networkId],
